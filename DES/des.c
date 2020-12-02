@@ -421,12 +421,13 @@ void encryption()
     char encryption_keys[16][49];
     char cipher_text[64] = ""; 
     
+    // Message and key can be upto 8 characters long
     printf("\nEnter the message to be encrypted: ");
-    scanf("%s",string_pt);
+    scanf("%[^\n]%*c",string_pt);
     str_to_bin(string_pt,plain_text);
 
     printf("Enter the key to be used for encryption: ");
-    scanf("%s",string_key);
+    scanf("%[^\n]%*c",string_key);
     str_to_bin(string_key,key);
 
     // Storing binary key in a text file
@@ -483,6 +484,7 @@ void decryption()
     bin_to_str(decrypted_text,string_decrypt);
     printf("Decrypted message is: %s\n",string_decrypt); 
 
+    // Comparing if the message entered by user and the decrypted message is same
     if(strcmp(string_pt,string_decrypt)==0)
     {
         printf("\n---------------------Text Decrypted Successfully!---------------------\n\n");

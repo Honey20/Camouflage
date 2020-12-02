@@ -410,11 +410,11 @@ int main()
     char string_key[9];
     
     printf("\nEnter the message to be encrypted: ");
-    scanf("%s",string_pt);
+    scanf("%[^\n]%*c",string_pt);
     str_to_bin(string_pt,plain_text);
 
     printf("Enter the key to be used for encryption: ");
-    scanf("%s",string_key);
+    scanf("%[^\n]%*c",string_key);
     str_to_bin(string_key,key);
 
     FILE *file;
