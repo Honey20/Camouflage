@@ -119,4 +119,16 @@ Below flow chart describes the working of K-Means Clustering algorithm:
       }
     }
    ```
-   
+
+## How to use
+
+Compile and Run:-
+```
+gcc k-means.c -o k-means -lm
+./k-means
+```
+![Screenshot from 2020-12-07 02-16-02](https://user-images.githubusercontent.com/47852407/101291949-65a89780-3832-11eb-8d0f-d84d93eb1101.png)
+![Screenshot from 2020-12-07 02-18-47](https://user-images.githubusercontent.com/47852407/101291978-95f03600-3832-11eb-8c6e-b5b0ee504e47.png)
+
+
+
