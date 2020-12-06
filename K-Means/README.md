@@ -59,64 +59,6 @@ Below flow chart describes the working of K-Means Clustering algorithm:
           }
         }
       }
-
-      Storing Results
-      for(c = 0; c < k; c++)
-        Initializing clustercount[c] as 0
-
-      for(c = 0; c < k; c++)
-      {
-        for(i = 0; i < total_pixels; i++)
-        {
-          if(pixels[i].cluster == c)
-            Increment clustercount[c] by one
-        }
-      }
-
-      Saving it to a file for LSB
-    }
-
-    main()
-    {
-      User input:-
-      -> Cover image
-      -> Parameter k for k-means algorithm, to define number of clusters
-      -> Number of iterations for which k-means will train
-
-      Declare an array of struct pixels to store values of each pixel
-
-      Loading image
-
-      for(i = 0; i < 3 * total_pixels; i+= 3)
-      {
-        Storing pixels in array of structure from image
-      }
-
-      Training the model
-      kmeansclustering(pixels, k, epochs, total_pixels, clustercount);
-
-      Printing Results of k-means algorithm
-
-      Pixels to Image
-      for(i = 0; i < k; i++)
-        Dynamically allocating memory for images
-
-      for(c = 0; c < k; c++)
-      {
-        counter = 0;
-        for(i = 0; i < width * height; i++)
-        {
-          if(pixels[i].cluster == c and counter < current image size)
-          {
-            Store pixel value in images
-          }
-        }
-      }
-
-      for(c = 0; c < k; c++)
-      {
-        Saving images in the same directory
-      }
     }
    ```
 
@@ -127,8 +69,10 @@ Compile and Run:-
 gcc k-means.c -o k-means -lm
 ./k-means
 ```
-![Screenshot from 2020-12-07 02-16-02](https://user-images.githubusercontent.com/47852407/101291949-65a89780-3832-11eb-8d0f-d84d93eb1101.png)
-![Screenshot from 2020-12-07 02-18-47](https://user-images.githubusercontent.com/47852407/101291978-95f03600-3832-11eb-8c6e-b5b0ee504e47.png)
+![SS-1](https://user-images.githubusercontent.com/47852407/101291949-65a89780-3832-11eb-8d0f-d84d93eb1101.png)
+![SS-2](https://user-images.githubusercontent.com/47852407/101291978-95f03600-3832-11eb-8c6e-b5b0ee504e47.png)
+![Clusters](https://user-images.githubusercontent.com/47852407/101292380-20399980-3835-11eb-9566-c9ae0be3afab.png)
+
 
 
 
