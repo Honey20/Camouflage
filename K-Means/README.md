@@ -7,7 +7,7 @@ Below flow chart describes the working of K-Means Clustering algorithm:
 ![K-Means](https://user-images.githubusercontent.com/47852407/101285592-13548000-380c-11eb-845a-713577e9e6a9.png)
 
 ## Pseudocode
-    ```
+   ```
     struct Pixel
     {
       double red, green, blue, min_dist
@@ -118,5 +118,5 @@ Below flow chart describes the working of K-Means Clustering algorithm:
         Saving images in the same directory
       }
     }
-    ```
+   ```
    
