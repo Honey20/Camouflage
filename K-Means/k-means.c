@@ -3,7 +3,11 @@
 #include<float.h>
 #include<time.h>
 #include<math.h>
-
+#include<string.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image/stb_image.h"
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image/stb_image_write.h"
 #define MAX 100000
 
 struct Pixel
@@ -14,21 +18,7 @@ struct Pixel
 	double min_dist;
 };
 
-void SameInitialCentroids(struct Pixel *centroids, int k)
-{
-	//Print random generated for first time
-	for(int i = 0; i < k; i++)
-		printf("Centroid-%d -> %f, %f, %f\n", i, centroids[i].red, centroids[i].green, centroids[i].blue);
-
-	// //Get last saved from user
-	// for(int i = 0; i < k; i++)
-	// {
-	// 	printf("Enter R, G, B for centroid-%d -> ", i);
-	// 	scanf("%d %d %d", &centroids[i].red, &centroids[i].green, &centroids[i].blue);
-	// }
-}
-
-void kmeansclustering(struct Pixel *pixels, int k, int epochs, int total_pixels)
+void kmeansclustering(struct Pixel *pixels, int k, int epochs, int total_pixels, int *clustercount)
 {
 	/*
 	Input:
@@ -42,6 +32,14 @@ void kmeansclustering(struct Pixel *pixels, int k, int epochs, int total_pixels)
 	*/
 
 	float distance;
+	
+	//Initialising cluster with -1 as it does it not belong to any cluster
+	//Initialising min_dist with infinty as it will decrease with number of iterations
+	for(int i = 0; i < total_pixels; i++)
+	{
+		pixels[i].cluster = -1;
+		pixels[i].min_dist = DBL_MAX;
+	}
 
 	//Initialising clusters with random centroids amongst pixels
 	struct Pixel centroids[k];
@@ -50,13 +48,14 @@ void kmeansclustering(struct Pixel *pixels, int k, int epochs, int total_pixels)
 		centroids[i] = pixels[rand()%total_pixels];
 
 	//Instead of generating random centroids at receiver side, generate with same initial centroids
-	SameInitialCentroids(centroids, k);
+	//SameInitialCentroids(centroids, k);
 
 	//Giving unique cluster ID to newly generated random centroids i.e. 0, 1, 2
 	for(int i = 0; i < k; i++)
 		centroids[i].cluster = i;
 
-  	//Calculate distance, update centroids and repeat for given epochs
+	printf("\nK-Means Algorithm:-\n");
+  //Calculate distance, update centroids and repeat for given epochs
 	for(int e = 0; e < epochs; e++)
 	{
 		//Assigning points to clusters by minimizing euclidean distance
@@ -120,66 +119,115 @@ void kmeansclustering(struct Pixel *pixels, int k, int epochs, int total_pixels)
 		printf("\n");
 	}
 
-	//Results
-	int n0 = 0, n1 = 0, n2 = 0;
-	for(int i = 0; i < total_pixels; i++)
+	//Storing Results
+	for(int c = 0; c < k; c++)
+		clustercount[c] = 0;
+		
+	for(int c = 0; c < k; c++)
 	{
-		if(pixels[i].cluster == 0)
-			n0++;
-		else if(pixels[i].cluster == 1)
-			n1++;
-		else if(pixels[i].cluster == 2)
-			n2++;
-		else
-			printf("Cluster is %d\n", pixels[i].cluster);
+		for(int i = 0; i < total_pixels; i++)
+		{
+			if(pixels[i].cluster == c)
+				clustercount[c]++;
+		}
 	}
-	printf("Number: %d, %d, %d\n", n0, n1, n2);
-
-	//Saving it to a file
+	
+	/*
+	//Saving it to a file for LSB input
 	FILE *fp;
 	fp = fopen("clusters.txt", "w");
 	for(int i = 0; i < total_pixels; i++)
-  		fprintf(fp, "%.0lf %.0lf %.0lf %d\n", pixels[i].red, pixels[i].green, pixels[i].blue, pixels[i].cluster);
+  		fprintf(fp, "%d %.0lf %.0lf %.0lf %d\n", i+1, pixels[i].red, pixels[i].green, pixels[i].blue, pixels[i].cluster);
   	fclose(fp);
+  */
 }
 
 int main()
 {
-	int k = 3; //number of clusters
-	int epochs = 40; //Number of iterations
-	int total_pixels = 335*187; //Number of pixels
-
-	//An array of struct pixels to store values of each pixel
+	//Image to pixels
+  int width, height, channels;
+  
+  int k; //number of clusters
+	int epochs; //Number of iterations
+	char imagename[20]; //Input image for clustering
+	
+	printf("K-Means Clustering for Image Segmentation on the basis of RGB values\n");
+	printf("`````````````````````````````````````````````````````````````````````\n");
+	printf("Enter name of image: ");
+	scanf("%s", imagename);
+	printf("Enter number of clusters(k): ");
+	scanf("%d", &k);
+	printf("Enter number of iterations(epochs): ");
+	scanf("%d", &epochs); 
+	
+	int total_pixels; //Number of pixels
+	int clustercount[k]; //Number of pixels in each cluster
+  
+  //An array of struct pixels to store values of each pixel
 	struct Pixel pixels[MAX];
-
-	FILE *file; //file pointer
-	//reading values of red, green and blue part into struct pixel
-
-	file = fopen("red.txt", "r");
-	for(int i = 0; i < total_pixels; i++)
-		fscanf(file, "%lf ", &pixels[i].red);
-
-	file = fopen("green.txt", "r");
-	for(int i = 0; i < total_pixels; i++)
-		fscanf(file, "%lf ", &pixels[i].green);
-
-	file = fopen("blue.txt", "r");
-	for(int i = 0; i < total_pixels; i++)
-		fscanf(file, "%lf ", &pixels[i].blue);
-
-	fclose(file);
-
-	//Initialising cluster with -1 as it does it not belong to any cluster
-	//Initialising min_dist with infinty as it will decrease with number of iterations
-	for(int i = 0; i < total_pixels; i++)
+	
+	//Loading image
+  unsigned char *img = stbi_load(imagename, &width, &height, &channels, 3);
+  total_pixels = width * height;
+  
+  //Error in loading the image
+  if(img == NULL)
+  {
+  	printf("Error in loading the image\n");
+  	exit(1);
+  }
+  
+  //Storing pixels
+  int counter = 0; 	
+	for(int i = 0; i < 3 * total_pixels; i+= 3)
 	{
-		pixels[i].cluster = -1;
-		pixels[i].min_dist = DBL_MAX;
+		pixels[counter].red = (double)*(img + i);
+		pixels[counter].green = (double)*(img + i + 1);
+		pixels[counter].blue = (double)*(img + i + 2);
+		counter++;
 	}
 
-	//Training the model
-	//And saving the results to a text file
-	kmeansclustering(pixels, k, epochs, total_pixels);
+	//Training the model and saving the results to a text file
+	kmeansclustering(pixels, k, epochs, total_pixels, clustercount);
 
+	//Results
+	printf("Total pixels - %d\n", total_pixels);
+	printf("Pixels in each cluster:-\n");	
+	for(int c = 0; c < k; c++)
+		printf("Cluster-%d : %d\n", c, clustercount[c]);
+	
+	//Pixels to Image
+  unsigned char *images[k];
+  
+  for(int i = 0; i < k; i++)
+  	images[i] = malloc(3 * (int)sqrt(clustercount[i]) * (int)sqrt(clustercount[i]) * sizeof(uint8_t));
+
+	for(int c = 0; c < k; c++)
+	{
+		counter = 0;
+		for(int i = 0; i < width * height; i++)
+		{
+			if(pixels[i].cluster == c && counter < 3 * (int)sqrt(clustercount[c]) * (int)sqrt(clustercount[c]))
+    	{
+		    *(images[c] + counter++) = (uint8_t)pixels[i].red;
+		    *(images[c] + counter++) = (uint8_t)pixels[i].green;
+		    *(images[c] + counter++) = (uint8_t)pixels[i].blue;
+    	}
+		}
+	}
+
+	printf("\n");
+  int desired_no_channels = 3;
+  
+  char name[30];
+  for(int c = 0; c < k; c++)
+  {
+		sprintf(name, "cluster-%d.png", c);
+  	printf("%s saved in same directory\n", name);
+  	stbi_write_png(name, (int)sqrt(clustercount[c]), (int)sqrt(clustercount[c]), desired_no_channels, images[c], (int)sqrt(clustercount[c]) * desired_no_channels);
+  }
 	return 0;
 }
+
+
+
