@@ -1,0 +1,3 @@
+[submodule "K-Means/stb_image"]
+	path = K-Means/stb_image
+	url = https://github.com/nothings/stb.git
