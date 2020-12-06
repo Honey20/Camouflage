@@ -12,7 +12,7 @@ In tradition method first we calculate the binary conversion of the number and t
 for eg, Calculating the LSB of `163`
 
     ----------------------------------
-           | Number         Reminder
+           | Number         Remainder
     -------|------------    ---------
         2  |  163               1          /^\
     --------------------                    |
