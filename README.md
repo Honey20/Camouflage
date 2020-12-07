@@ -34,5 +34,5 @@ Below given data flow diagram describes the use of files and information through
 - **LSB Decryption:** Cipher is extracted from the stego-images and is stored in a file. 
 <img src="https://lh6.googleusercontent.com/pT6AveLUP6jw6fxozvrI1AuxVnG7ujakXOGDRx0m-bOSh-BF4DM542l1-eom-oMUD1eFKoWhXIKEs5_SUupncbVOEwNDlrwkIIMnGZEns0zvpB0iYFG98YeECyoWhKD7WOLEIzjc" width="700" height="175"/>`
 
-- **DES Decryption:** The cipher text is then decrypted to obtain the secret message. File storing the key is used for decryption.
+- **DES Decryption:** The cipher text is then decrypted to obtain the secret message. File storing the key is used for decryption.  
 <img src="https://lh5.googleusercontent.com/u97aOd2Rg3lRkuKxOqj7K1Ahd35Dac4GJhWGTU6x1BcEwLWS6p3fTcH1Wzx-jP2G4jF4U8ZKJ3JGqF9AXMy4dn79oTZhJGN1XcjuMm0qVHw1jpWeesB967ioR47u2NmhcfqmIEYq" width="700" height="175"/>`
