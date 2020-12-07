@@ -1,4 +1,5 @@
 # Project Camouflage
+In this project, we use DES encryption to encrypt the text message and pixels of the cover image are clustered using the K-means clustering algorithm. Cluster-wise steganography is then performed and the stego-image, along with the DES key is transferred. On the receiver’s end, the ciphertext is extracted from the cover images and then decrypted using DES algorithm to obtain the message.
 
 The entire implementation of this project can be summarized in the following steps:
 - **Step 1:** Encrypting the message entered by sender using DES encryption algorithm.
