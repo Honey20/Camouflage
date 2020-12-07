@@ -23,6 +23,7 @@ Below given data flow diagram describes the use of files and information through
 <img src="https://lh5.googleusercontent.com/jyRje-vCKzfv2Od1pqIa9PLrL30DsUOLqm6dsYQgyAe_ddx02sNQ4nP5tpL7dNAWm_kzTSwRfCIMZnlCC5vwcYFSDyRZayc-flJ4fpCJEQtGRSWorH7k-n7XYIfD4ind-B2wOdGW" width="320" height="125"/>`
 
 - **K-means Clustering:** Given image is clustered into k-segments using K-means algorithm. Clusters and file storing cluster information is generated.
+
   <img src="https://lh4.googleusercontent.com/JjXZmoCBn0QZcuAxPJOwuIZHhIwTSZLebUWxhrxBMr7wapbG9zVbJCQY3COXS0BwB8npmfKIQAGTKby-BAC03p8tKQ07YsEYSO4wlQ8qidcOV1bSj0365ZQhH_Nc5uJQFSCpDOGT" width="700" height="400"/>
 <img src="https://lh6.googleusercontent.com/KNzEtx-Epxh-sZ5a9W7NWEeDsP2Kp6No9slCvtNmBEyfYGxPqGbAs5Zg5uyGXv1EC90JXceI9v3hgrrAOm4rOl9n6pnPTWw_nexjKkHcciSwDdajRCK9r12XJxJVPonvTzN4wOtD" width="700" height="125"/>`
 
