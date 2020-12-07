@@ -19,19 +19,19 @@ Below given data flow diagram describes the use of files and information through
 
 ## Sender's Side:
 - **DES Encryption:** Secret Message is encrypted using the DES algorithm. Two files containing the key and the cipher text are generated. 
-<img src="https://lh5.googleusercontent.com/-sIpwRBrv1kW0GiTCdxcypWyU_zTolLjX_G2fT66Inprml6x8ybz9qkmAY2BF9rWilExNkxS2XRvpELBCGEGAG52ImrfvCddM_zgy7DhijRSQOIT1JzDxvZx7pAc8ZQ0zC-xoU6k" width="700" height="200"/>
+  <img src="https://lh5.googleusercontent.com/-sIpwRBrv1kW0GiTCdxcypWyU_zTolLjX_G2fT66Inprml6x8ybz9qkmAY2BF9rWilExNkxS2XRvpELBCGEGAG52ImrfvCddM_zgy7DhijRSQOIT1JzDxvZx7pAc8ZQ0zC-xoU6k" width="700" height="200"/>
 <img src="https://lh5.googleusercontent.com/jyRje-vCKzfv2Od1pqIa9PLrL30DsUOLqm6dsYQgyAe_ddx02sNQ4nP5tpL7dNAWm_kzTSwRfCIMZnlCC5vwcYFSDyRZayc-flJ4fpCJEQtGRSWorH7k-n7XYIfD4ind-B2wOdGW" width="320" height="125"/>`
 
 - **K-means Clustering:** Given image is clustered into k-segments using K-means algorithm. Clusters and file storing cluster information is generated.
-<img src="https://lh4.googleusercontent.com/JjXZmoCBn0QZcuAxPJOwuIZHhIwTSZLebUWxhrxBMr7wapbG9zVbJCQY3COXS0BwB8npmfKIQAGTKby-BAC03p8tKQ07YsEYSO4wlQ8qidcOV1bSj0365ZQhH_Nc5uJQFSCpDOGT" width="700" height="400"/>
+  <img src="https://lh4.googleusercontent.com/JjXZmoCBn0QZcuAxPJOwuIZHhIwTSZLebUWxhrxBMr7wapbG9zVbJCQY3COXS0BwB8npmfKIQAGTKby-BAC03p8tKQ07YsEYSO4wlQ8qidcOV1bSj0365ZQhH_Nc5uJQFSCpDOGT" width="700" height="400"/>
 <img src="https://lh6.googleusercontent.com/KNzEtx-Epxh-sZ5a9W7NWEeDsP2Kp6No9slCvtNmBEyfYGxPqGbAs5Zg5uyGXv1EC90JXceI9v3hgrrAOm4rOl9n6pnPTWw_nexjKkHcciSwDdajRCK9r12XJxJVPonvTzN4wOtD" width="700" height="125"/>`
 
 - **LSB Encryption:** The cipher text is hidden in the images created above using LSB steganography and new images are stored.
-<img src="https://lh6.googleusercontent.com/_PkWPx_k9tPh0LFTOocbLghIc1DAY432ju9JR3zMM7Kw00_2WHhyJNk8XsKMoJUkvGu7gc3r8SlheJr8_rkPiIN43_DInLrO4M3gzD1NK8-RsKUf0sMcFh5xV6KWX_2NYUpS2odN" width="700" height="450"/>
+  <img src="https://lh6.googleusercontent.com/_PkWPx_k9tPh0LFTOocbLghIc1DAY432ju9JR3zMM7Kw00_2WHhyJNk8XsKMoJUkvGu7gc3r8SlheJr8_rkPiIN43_DInLrO4M3gzD1NK8-RsKUf0sMcFh5xV6KWX_2NYUpS2odN" width="700" height="450"/>
 <img src="https://lh4.googleusercontent.com/yMnjKNrG7aOkqg6gTpZdmtutIt1uYYR_3pn2AaB5GbNioajuzUShAfSQ3YDG41f05qmUpmxSnWdDCYgQkNmc4Ea0c-RTYZ6WUFQ98u6MF4jqqvYXCmFwenpyEKNYP5NQeTJBaDrZ" width="600" height="125"/>`
 
 ## Receiver's Side:
-- **LSB Decryption:** Cipher is extracted from the stego-images and is stored in a file.
+- **LSB Decryption:** Cipher is extracted from the stego-images and is stored in a file. 
 <img src="https://lh6.googleusercontent.com/pT6AveLUP6jw6fxozvrI1AuxVnG7ujakXOGDRx0m-bOSh-BF4DM542l1-eom-oMUD1eFKoWhXIKEs5_SUupncbVOEwNDlrwkIIMnGZEns0zvpB0iYFG98YeECyoWhKD7WOLEIzjc" width="700" height="175"/>`
 
 - **DES Decryption:** The cipher text is then decrypted to obtain the secret message. File storing the key is used for decryption.
