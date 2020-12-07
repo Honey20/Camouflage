@@ -18,7 +18,7 @@ Below given data flow diagram describes the use of files and information through
 ![DFD](https://lh4.googleusercontent.com/_pgW1jmxvUswDgNPVa3QIpMH2Ad_obtueTixBgtfi-CtATIOBuG5Ov6KOnKTpcWmffCPGoKvBYR_nvLgu_DIwNYkoLXN8rVquZ1RPxcj1MV-n9cpopnjMEqZ4gp-uUGZ1NDCqCo4)
 
 ## Sender's Side:
-- **DES Encryption:** Secret Message is encrypted using the DES algorithm. Two files containing the key and the cipher text are generated.
+- **DES Encryption:** Secret Message is encrypted using the DES algorithm. Two files containing the key and the cipher text are generated. 
 <img src="https://lh5.googleusercontent.com/-sIpwRBrv1kW0GiTCdxcypWyU_zTolLjX_G2fT66Inprml6x8ybz9qkmAY2BF9rWilExNkxS2XRvpELBCGEGAG52ImrfvCddM_zgy7DhijRSQOIT1JzDxvZx7pAc8ZQ0zC-xoU6k" width="700" height="200"/>
 <img src="https://lh5.googleusercontent.com/jyRje-vCKzfv2Od1pqIa9PLrL30DsUOLqm6dsYQgyAe_ddx02sNQ4nP5tpL7dNAWm_kzTSwRfCIMZnlCC5vwcYFSDyRZayc-flJ4fpCJEQtGRSWorH7k-n7XYIfD4ind-B2wOdGW" width="320" height="125"/>`
 
