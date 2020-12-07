@@ -13,3 +13,9 @@ Description of codes given above:
 - **des_encryption.c:** This is the program to encrypt the given text.
 - **des_decryption.c:** This is the program to decrypt the given text.
 - **round_key_generation.c:** This is the program to generate 16 round keys needed for encryption and decryption.
+
+
+
+## Compile and Run
+    gcc filename.c -lm
+    ./a.out
